@@ -7,7 +7,7 @@ namespace CaixaEletronico
     public class Menu
     {
         private readonly ICaixa _caixa;
-        public Menu(ICaixa caixa )
+        public Menu( ICaixa caixa )
         {
             _caixa = caixa;
         }
@@ -22,7 +22,7 @@ namespace CaixaEletronico
                 Console.WriteLine( "1 - Carregar notas" );
                 Console.WriteLine( "2 - Saque" );
                 Console.WriteLine( "3 - Saldo" );
-                Console.WriteLine( "4 - Sair" );
+                Console.WriteLine( "4 - Sair\n" );
 
                 int opcaoSelecionada = Convert.ToInt32( Console.ReadLine( ) );
 
@@ -39,9 +39,11 @@ namespace CaixaEletronico
                         break;
                     case 4:
                         programaEmLoop = false;
+                        Console.Clear( );
                         break;
                     default:
-                        Console.WriteLine( "Infome uma opção válida" );
+                        Console.Clear( );
+                        Console.WriteLine( "Infome uma opção válida.\n" );
                         break;
                 }
 
@@ -50,42 +52,57 @@ namespace CaixaEletronico
 
         private void DepositarNotas( )
         {
-            Console.WriteLine("Informe a nota que deseja carregar : ");
+            Console.Clear( );
+            Console.WriteLine( "Informe a nota que deseja carregar:\n" );
 
             foreach ( var nota in _caixa.Notas )
             {
-                Console.WriteLine($"{nota.Key} Reais" );
+                Console.WriteLine( $"{nota.Key} Reais" );
             }
+
+            Console.WriteLine( "" );
 
             int notaSelecionada = Convert.ToInt32( Console.ReadLine( ) );
 
-            Console.WriteLine("Informe a quantidade de notas que deseja inserir: ");
+            Console.Clear( );
+      
+            Console.WriteLine( "Informe a quantidade de notas que deseja inserir:\n" );
 
             int quantidade = Convert.ToInt32( Console.ReadLine( ) );
 
             if ( _caixa.Depositar( notaSelecionada, quantidade ) )
             {
-                Console.WriteLine("Deposito efetuado com sucesso");
+                Console.Clear( );
+                Console.WriteLine( "Deposito efetuado com sucesso.\n" );
             }
         }
 
         private void SacarNotas( )
         {
-            Console.WriteLine("Informe o valor que deseja sacar: ");
+            Console.Clear( );
+            Console.WriteLine( "Informe o valor que deseja sacar:\n" );
             int valorSacar = Convert.ToInt32( Console.ReadLine( ) );
 
             if ( _caixa.Sacar( valorSacar ) )
             {
-                Console.WriteLine("Saque efetuado com sucesso");
+                //Console.Clear( );
+                Console.WriteLine( "Saque efetuado com sucesso" );
+            }
+            else
+            {
+                Console.WriteLine( "Não é possível sacar esse valor" );
             }
         }
 
         private void RelatorioNotas( )
         {
+            Console.Clear( );
             foreach ( var nota in _caixa.Notas )
             {
-                Console.WriteLine($"{nota.Key} reais - R${nota.Key * nota.Value},00");
+                Console.WriteLine( $"{nota.Key} reais - R${nota.Key * nota.Value},00" );
             }
+
+            Console.WriteLine( "" );
         }
     }
 }

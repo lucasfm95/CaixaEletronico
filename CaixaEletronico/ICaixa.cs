@@ -8,6 +8,6 @@ namespace CaixaEletronico
     {
         Dictionary<int, int> Notas { get; set; }
         bool Depositar( int nota, int quantidade ); 
-        bool Sacar( int value );
+        bool Sacar( int valor );
     }
 }
