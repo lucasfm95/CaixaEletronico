@@ -9,11 +9,12 @@ namespace CaixaEletronico
     {
         public Dictionary<int, int> Notas { get; set; } = new Dictionary<int, int>( );
 
-        public Caixa( )
+        public Caixa( List<int> notas )
         {
-            Notas.Add( 10, 0 );
-            Notas.Add( 20, 0 );
-            Notas.Add( 50, 0 );
+            foreach ( var item in notas )
+            {
+                Notas.Add( item, 0 );
+            }
         }
 
         public bool Sacar( int valor )

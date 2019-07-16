@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CaixaEletronico
 {
@@ -9,7 +10,14 @@ namespace CaixaEletronico
 
             Console.WriteLine( "Simulador Caixa Eletrônico.\n" );
 
-            Menu menu = new Menu( new Caixa() );
+            List<int> notas = new List<int>( );
+
+            foreach ( var item in args )
+            {
+                notas.Add( Convert.ToInt32( item ) );
+            }
+
+            Menu menu = new Menu( new Caixa( notas ) );
             menu.InteracaoUsuario( );
 
         }
