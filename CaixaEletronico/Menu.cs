@@ -99,9 +99,9 @@ namespace CaixaEletronico
             Console.Clear( );
             foreach ( var nota in _caixa.Notas )
             {
-                Console.WriteLine( $"{nota.Key} reais - R${nota.Key * nota.Value},00" );
+                Console.WriteLine( $"{nota.Value} de {nota.Key} reais - R${nota.Key * nota.Value},00" );
             }
-
+            Console.WriteLine($"Saldo total de R$ {_caixa.ValorTotalNotas},00" );
             Console.WriteLine( "" );
         }
     }
